@@ -36,6 +36,7 @@ const firebaseConfig = {
             const user = userCredential.user;
             localStorage.setItem('currentUserUid',user.uid);
             logindiv.style.display = "none";
+            getMessage(displayMessage);
         })
   });
 
@@ -95,10 +96,9 @@ const firebaseConfig = {
     }
 
     if(currentUser){
+        getMessage(displayMessage)
         logindiv.style.display = "none";
         chatContainer.style.display = "flex";
-        getMessage(displayMessage)
-        
     }
     else{
         logindiv.style.display = "flex";
