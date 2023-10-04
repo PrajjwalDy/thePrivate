@@ -1,0 +1,88 @@
+@import url('https://fonts.cdnfonts.com/css/modern-typewriter');
+*{
+    margin: 0;
+    padding: 0;                                 
+}
+
+body{
+    background-color: black;
+    font-family: 'MODERN TYPEWRITER', sans-serif;
+}
+
+.welcome-text{
+    font-size: 16px;
+    color: white;
+    margin: 5px;
+    font-family: 'Nanum Gothic Coding', cursive;
+}
+
+
+.input-text{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-family: 'Nanum Gothic Coding', cursive;;
+    font-size: 16px;
+    color: whitesmoke;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#login-btn{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #000000;
+    font-family: 'Nanum Gothic Coding', cursive;;
+    font-size: 16px;
+    border: none;
+    margin: 5px;
+}
+
+#send-btn{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #000000;
+    font-family: 'Nanum Gothic Coding', cursive;;
+    font-size: 16px;
+    border: none;
+    margin: 5px;
+}
+
+
+.chat-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#username{
+    color: white;
+    font-size: 16px;
+    margin: 5px;
+    font-family: 'Nanum Gothic Coding', cursive;
+}
+
+#message{
+    color: rgb(177, 173, 173);
+    font-size: 16px;
+    margin: 5px;
+    font-family: 'Nanum Gothic Coding', cursive;;
+}
