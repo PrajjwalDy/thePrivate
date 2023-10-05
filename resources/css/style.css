@@ -6,7 +6,8 @@
 
 body{
     background-color: black;
-    font-family: 'MODERN TYPEWRITER', sans-serif;
+    font-family: 'Nanum Gothic Coding', cursive;
+    color: white;
 }
 
 .welcome-text{
@@ -50,7 +51,7 @@ body{
     width: 200px;
     height: 30px;
     border-radius: 10px;
-    background-color: #000000;
+    background-color:black;
     font-family: 'Nanum Gothic Coding', cursive;;
     font-size: 16px;
     border: none;
@@ -63,6 +64,7 @@ body{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 10px;
     
 }
 
@@ -81,8 +83,27 @@ body{
 }
 
 #message{
+    width: 100%;
+    height: auto;
     color: rgb(177, 173, 173);
     font-size: 16px;
     margin: 5px;
+    font-family: 'Nanum Gothic Coding', cursive;
+    white-space: pre-wrap;
+}
+
+.messageInput{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: none;
     font-family: 'Nanum Gothic Coding', cursive;;
+    font-size: 16px;
+    color: whitesmoke;
+}
+
+#typeText{
+    margin-bottom: 10px;
 }

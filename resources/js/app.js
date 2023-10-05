@@ -20,27 +20,73 @@ const firebaseConfig = {
   const signin = document.getElementById("login-btn");
   const logindiv = document.getElementById("login-div");
   const sendMsg = document.getElementById("send-btn");
+  const message = document.getElementById("message-input");
 
   const chatContainer = document.getElementById("chat-container");
+  const dynamicText  = document.getElementById("dyText");
 
 
     
   const auth = getAuth(app);
   const db = getDatabase(app);
 
+
+const chatElement = document.getElementById("dyText");
+const textToType = [
+    "Connecting to server...",
+    "server 192.168.hinduverse..",
+    "Connected successfully.",
+    "Accessing confidential files...",
+    "Welcome to the thePrivate secure server.",
+    "Authenticate to continue, enter your email below, press tab and enter your passcode, hit enter to authenticate..."
+    
+];
+
+function typeText() {
+    let i = 0;
+    const interval = setInterval(() => {
+        if (i < textToType.length) {
+            const messageElement = document.createElement("p");
+            messageElement.id = "typeText";
+            messageElement.textContent = textToType[i];
+            chatElement.appendChild(messageElement);
+            chatElement.scrollTop = chatElement.scrollHeight;
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000); // Adjust the typing speed here
+}
+
+
+
+
   signin.addEventListener("click",(e)=>{
         e.preventDefault();
-
+        dynamicText.innerHTML = "Authenticating......"
         signInWithEmailAndPassword(auth, email.value, password.value)
         .then((userCredential)=>{
             const user = userCredential.user;
             localStorage.setItem('currentUserUid',user.uid);
             logindiv.style.display = "none";
             getMessage(displayMessage);
+            dynamicText.innerHTML = "Authentication Successful.."
+            getMessage();
         })
   });
 
     const currentUser = localStorage.getItem('currentUserUid');
+
+    if(currentUser){
+        getMessage(displayMessage)
+        logindiv.style.display = "none";
+        chatContainer.style.display = "flex";
+    }
+    else{
+        logindiv.style.display = "flex";
+        chatContainer.style.display = "none";
+        typeText();
+    }
     
 
     function createChatCard(post){
@@ -50,10 +96,10 @@ const firebaseConfig = {
 
         // Create a paragraph element for the username
         const usernamePara = document.createElement('p');
-                usernamePara.id = 'username';
+        usernamePara.id = 'username';
 
         // Create a paragraph element for the message
-        const messagePara = document.createElement('p');
+        const messagePara = document.createElement('code');
         messagePara.id = 'message';
         messagePara.textContent = post.message;
 
@@ -95,18 +141,6 @@ const firebaseConfig = {
         }
     }
 
-    if(currentUser){
-        getMessage(displayMessage)
-        logindiv.style.display = "none";
-        chatContainer.style.display = "flex";
-    }
-    else{
-        logindiv.style.display = "flex";
-        chatContainer.style.display = "none";
-    }
-
-
-
     function uploadMessage(messageText, username) {
         const db = getDatabase();
         // Reference to the "messages" node in your Firebase database
@@ -124,11 +158,53 @@ const firebaseConfig = {
         })
 
       }
+
+      message.addEventListener('paste', function (e) {
+        e.preventDefault(); // Prevent the default paste behavior
+    
+        // Get the pasted text from the clipboard
+        const pastedText = e.clipboardData.getData('text/plain');
+    
+        // Insert the pasted text with newline characters
+        const currentCursorPosition = this.selectionStart;
+        const textBeforeCursor = this.value.slice(0, currentCursorPosition);
+        const textAfterCursor = this.value.slice(currentCursorPosition);
+        this.value = textBeforeCursor + pastedText + textAfterCursor;
+    
+        // Update the cursor position
+        this.selectionStart = this.selectionEnd = currentCursorPosition + pastedText.length;
+    });
+
+    message.addEventListener('keydown', function (e) {
+        // Check if the Enter key (keyCode 13) is pressed
+        if (e.keyCode === 13 && !e.shiftKey) {
+            e.preventDefault(); // Prevent the default behavior of Enter key
+            if(message.value === "logout"){
+                logout();
+                message.value = "";
+            }else{
+                uploadMessage(message.value, currentUser);
+                message.value = "";
+            }
+        }
+    });
+
+    function logout(){
+        localStorage.removeItem('currentUserUid');
+        window.location.reload();
+    }
       
 
     sendMsg.addEventListener("click",(e)=>{
         e.preventDefault();
-        const message = document.getElementById("message-input");
-        uploadMessage(message.value, currentUser);
-        message.value = "";
+        if(message.value === "logout"){
+            logout();
+            message.value = "";
+        }else{
+            uploadMessage(message.value, currentUser);
+            message.value = "";
+        }
+        
     });
+
+    
