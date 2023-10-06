@@ -136,6 +136,9 @@ function typeText() {
      for (let key in data) {
         const post = data[key];
         createChatCard(post);
+        if(post.sender !== currentUser){
+            requestNotificationPermission();
+        }
         }
     }
 
@@ -146,7 +149,8 @@ function typeText() {
 
         set(ref(db,'Chats/'+timestamp),{
             message: messageText,
-            username: username
+            username: username,
+            sender: currentUser
         })
         .then(()=>{
             console.log("Message uploaded successfully!");
@@ -218,5 +222,46 @@ function typeText() {
             getMessage();
         })
   });
+
+  // ... Your existing code ...
+
+// Function to request notification permission
+function requestNotificationPermission(title,body) {
+    if (Notification.permission !== 'granted') {
+        Notification.requestPermission().then((permission) => {
+            if (permission === 'granted') {
+                // Permission granted, you can now show notifications
+                onNewMessageReceived()
+            }
+        });
+    }
+}
+
+// Function to display a notification
+function displayNotification(title, body) {
+    if (Notification.permission === 'granted') {
+        const notification = new Notification(title, { body });
+        notification.onclick = function () {
+            // Bring the chat window to the foreground or navigate to the chat room
+            window.focus();
+        };
+    }
+}
+
+// ... Your existing code ...
+
+// When a new message arrives, display a notification
+function onNewMessageReceived() {
+    const title = "New Message";
+    const body = "You have a new chat message.";
+    displayNotification(title, body);
+
+    // Handle the new message and update the chat window
+    // ...
+}
+
+// ... Your existing code ...
+
+
 
     
