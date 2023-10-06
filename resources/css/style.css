@@ -12,6 +12,19 @@ body{
     background-color: black;
     font-family: dotline;
     color: white;
+    
+}
+
+.welcome-img{
+    width: 500px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .welcome-text{

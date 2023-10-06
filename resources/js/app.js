@@ -58,19 +58,7 @@ function typeText() {
     }, 1000); // Adjust the typing speed here
 }
 
-  signin.addEventListener("click",(e)=>{
-        e.preventDefault();
-        dynamicText.innerHTML = "Authenticating......"
-        signInWithEmailAndPassword(auth, email.value, password.value)
-        .then((userCredential)=>{
-            const user = userCredential.user;
-            localStorage.setItem('currentUserUid',user.uid);
-            logindiv.style.display = "none";
-            getMessage(displayMessage);
-            dynamicText.innerHTML = "Authentication Successful.."
-            window.location.reload();
-        })
-  });
+  
 
     const currentUser = localStorage.getItem('currentUserUid');
 
@@ -219,7 +207,7 @@ function typeText() {
             logindiv.style.display = "none";
             getMessage(displayMessage);
             dynamicText.innerHTML = "Authentication Successful.."
-            getMessage();
+            window.location.reload();
         })
   });
 
@@ -260,7 +248,6 @@ function onNewMessageReceived() {
     // ...
 }
 
-// ... Your existing code ...
 
 
 
