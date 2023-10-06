@@ -6,7 +6,7 @@
 
 body{
     background-color: black;
-    font-family: 'Nanum Gothic Coding', cursive;
+    font-family: 'Codystar', cursive;
     color: white;
 }
 
@@ -14,7 +14,7 @@ body{
     font-size: 16px;
     color: white;
     margin: 5px;
-    font-family: 'Nanum Gothic Coding', cursive;
+    font-family: 'Codystar', cursive;
 }
 
 
@@ -25,7 +25,7 @@ body{
     background-color: transparent;
     outline: none;
     border: none;
-    font-family: 'Nanum Gothic Coding', cursive;;
+    font-family: 'Codystar', cursive;
     font-size: 16px;
     color: whitesmoke;
 }
@@ -41,7 +41,7 @@ body{
     height: 30px;
     border-radius: 10px;
     background-color: #000000;
-    font-family: 'Nanum Gothic Coding', cursive;;
+    font-family: 'Codystar', cursive;
     font-size: 16px;
     border: none;
     margin: 5px;
@@ -52,7 +52,7 @@ body{
     height: 30px;
     border-radius: 10px;
     background-color:black;
-    font-family: 'Nanum Gothic Coding', cursive;;
+    font-family: 'Codystar', cursive;
     font-size: 16px;
     border: none;
     margin: 5px;
@@ -76,19 +76,19 @@ body{
 }
 
 #username{
-    color: white;
+    color: rgb(255, 0, 0);
     font-size: 16px;
     margin: 5px;
-    font-family: 'Nanum Gothic Coding', cursive;
+    font-family: 'Codystar', cursive;
 }
 
 #message{
     width: 100%;
     height: auto;
-    color: rgb(177, 173, 173);
+    color: rgb(15, 244, 7);
     font-size: 16px;
     margin: 5px;
-    font-family: 'Nanum Gothic Coding', cursive;
+    font-family: 'Codystar', cursive;
     white-space: pre-wrap;
 }
 
@@ -100,7 +100,7 @@ body{
     outline: none;
     border: none;
     padding: 5px;
-    font-family: 'Nanum Gothic Coding', cursive;;
+    font-family: 'Codystar', cursive;
     font-size: 16px;
     color: whitesmoke;
 }

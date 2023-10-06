@@ -58,9 +58,6 @@ function typeText() {
     }, 1000); // Adjust the typing speed here
 }
 
-
-
-
   signin.addEventListener("click",(e)=>{
         e.preventDefault();
         dynamicText.innerHTML = "Authenticating......"
@@ -121,6 +118,7 @@ function typeText() {
     }
 
     function getMessage(callback){
+        dynamicText.innerHTML = "fethching chats please wait........"
         chatContainer.innerHTML = "";
         
 
